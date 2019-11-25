@@ -1,0 +1,56 @@
+<!--
+    HTML-file in templates directory (main file)
+-->
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Dialogue</title>
+        <script>
+            /**
+            *  main.js file, helping to send text from input box
+            */
+            function send() {
+                inputData = document.querySelector("#send");
+                let old = document.querySelector(".user");
+                if (old != null) {
+                    old.innerHTML = inputData.value;
+                }
+                else {
+                    let text = document.createElement("DIV");
+                    text.innerHTML = inputData.value;
+                    text.className = "user";
+                    document.body.appendChild(text);
+                }
+                inputData.value = "";
+            }
+        </script>
+        <style>
+            html {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+            input {
+                margin-top: 30%;
+                margin-left: 20%;
+                width: 70%;
+                height: 20%;;
+                font-size: 35px;
+                background: lightgray;
+            }
+            button {
+                margin-top: -30%;
+                font-size: 35px;
+                background: lightgray;
+                color: gray;
+            }
+            .chat {
+                font-size: 200%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="chat">You: {{user}}</div>
+        <div class="chat">Assitant: {{answer}}</div>
+    </body>
+</html>

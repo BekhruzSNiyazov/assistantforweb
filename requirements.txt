@@ -3,4 +3,3 @@ flask_session
 gunicorn
 playsound
 gtts
-SpeechRecognition

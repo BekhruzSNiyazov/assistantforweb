@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request
 from random import randrange
-from speak import speak
 
-hello = ["Hello to you to!", "Hello! How are you?", "How can I help you?"]
+hello = ["Hello to you too!", "Hello! How are you?", "How can I help you?"]
 goodbye = ["Goodbye to you to!", "Have a nice day!", "Waiting for you..."]
 sorry = ["Sorry, I can't do that yet!", "Sorry, but I don't understand that!", "Sorry, I can't do that, please, try another command"]
 feeling = ["I'm fine, thank you!", "Very well, thanks!", "Very good, tank you! And you?"]
@@ -26,7 +25,6 @@ def assist():
         text = text.lower()
         if "hello" in text:
             answer = hello[randrange(0, 2)]
-            speak(answer)
             return render_template("index.html", answer=answer, user=text) + """
             <form action="message" method="GET", "POST">
                 <input name="message" id="send" placeholder="Type here...">
@@ -35,7 +33,6 @@ def assist():
             """
         elif "goodbye" in text:
             answer = goodbye[randrange(0, 2)]
-            speak(answer)
             return render_template("index.html", answer=answer, user=text) + """
             <form action="message" method="GET", "POST">
                 <input name="message" id="send" placeholder="Type here...">
@@ -44,7 +41,6 @@ def assist():
             """
         elif "random" in text and "number" in text:
             answer = randrange(100)
-            speak(answer)
             return render_template("index.html", answer=answer, user=text) + """
             <form action="message" method="GET", "POST">
                 <input name="message" id="send" placeholder="Type here...">
@@ -54,7 +50,6 @@ def assist():
         elif "/" in text:
             try:
                 answer = f"{int(text.split()[0])} / {int(text.split()[-1])} = {int(text.split()[0])/int(text.split()[-1])}"
-                speak(answer)
                 return render_template("index.html", answer=answer, user=text) + """
             <form action="message" method="GET", "POST">
                 <input name="message" id="send" placeholder="Type here...">
@@ -63,7 +58,6 @@ def assist():
             """
             except:
                 answer = sorry[randrange(0, 2)]
-                speak(answer)
                 return render_template("index.html", answer=answer, user=text) + """
             <form action="message" method="GET", "POST">
                 <input name="message" id="send" placeholder="Type here...">
@@ -73,7 +67,6 @@ def assist():
         elif "*" in text:
             try:
                 answer = f"{int(text.split()[0])} * {int(text.split()[-1])} = {int(text.split()[0])*int(text.split()[-1])}"
-                speak(answer)
                 return render_template("index.html", answer=answer, user=text) + """
             <form action="message" method="GET", "POST">
                 <input name="message" id="send" placeholder="Type here...">
@@ -82,7 +75,6 @@ def assist():
             """
             except:
                 answer = sorry[randrange(0, 2)]
-                speak(answer)
                 return render_template("index.html", answer=answer, user=text) + """
             <form action="message" method="GET", "POST">
                 <input name="message" id="send" placeholder="Type here...">
@@ -92,7 +84,6 @@ def assist():
         elif "+" in text:
             try:
                 answer = f"{int(text.split()[0])} + {int(text.split()[-1])} = {int(text.split()[0])+int(text.split()[-1])}"
-                speak(answer)
                 return render_template("index.html", answer=answer, user=text) + """
             <form action="message" method="GET", "POST">
                 <input name="message" id="send" placeholder="Type here...">
@@ -101,7 +92,6 @@ def assist():
             """
             except:
                 answer = sorry[randrange(0, 2)]
-                speak(answer)
                 return render_template("index.html", answer=answer, user=text) + """
             <form action="message" method="GET", "POST">
                 <input name="message" id="send" placeholder="Type here...">
@@ -119,7 +109,6 @@ def assist():
             """
             except:
                 answer = sorry[randrange(0, 2)]
-                speak(answer)
                 return render_template("index.html", answer=answer, user=text) + """
             <form action="message" method="GET", "POST">
                 <input name="message" id="send" placeholder="Type here...">
@@ -128,7 +117,6 @@ def assist():
             """
         elif "how are you" in text:
             answer = feeling[randrange(0, 2)]
-            speak(answer)
             return render_template("index.html", answer=answer, user=text) + """
             <form action="message" method="GET", "POST">
                 <input name="message" id="send" placeholder="Type here...">
@@ -137,7 +125,6 @@ def assist():
             """
         elif "what can you do" in text or "who are you" in text:
             answer = "I am an Assistant by Bekhruz Niyazov. I can translate English to Russian, set timers, count and make you laugh."
-            speak(answer)
             return render_template("index.html", answer=answer, user=text) + """
             <form action="message" method="GET", "POST">
                 <input name="message" id="send" placeholder="Type here...">
@@ -146,7 +133,6 @@ def assist():
             """
         elif "make me laugh" in text or "joke" in text:
             answer = jokes[randrange(0, 1)]
-            speak(answer)
             return render_template("index.html", answer=answer, user=text) + """
             <form action="message" method="GET", "POST">
                 <input name="message" id="send" placeholder="Type here...">
@@ -155,7 +141,6 @@ def assist():
             """
         else:
             answer = sorry[randrange(0, 2)]
-            speak(answer)
             return render_template("index.html", answer=answer, user=text) + """
             <form action="message" method="GET", "POST">
                 <input name="message" id="send" placeholder="Type here...">

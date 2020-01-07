@@ -1,34 +1,31 @@
-<!--
-    HTML-file in templates directory (main file)
--->
-
 <!DOCTYPE html>
 
 <html>
     <head>
         <title>Assistant</title>
-        <script>
-            /**
-            *  main.js file, helping to send text from input box
-            */
-            function send() {
-                inputData = document.querySelector("#send");
-                let old = document.querySelector(".user");
-                if (old != null) {
-                    old.innerHTML = inputData.value;
-                }
-                else {
-                    let text = document.createElement("DIV");
-                    text.innerHTML = inputData.value;
-                    text.className = "user";
-                    document.body.appendChild(text);
-                }
-                inputData.value = "";
-            }
-        </script>
         <style>
             html {
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+            .assistant {
+                margin-top: -30%;
+                margin-left: 20%;
+                text-align: center;
+                width: 10%;
+                height: auto;
+                font-size: 35px;
+                line-height: 35px;
+                background: lightgray;
+            }
+            .user {
+                margin-top: -30%;
+                margin-left: 70%;
+                text-align: center;
+                width: 10%;
+                height: auto;
+                font-size: 35px;
+                line-height: 35px;
+                background: lightgray;
             }
             input {
                 margin-top: 30%;
@@ -44,13 +41,11 @@
                 background: lightgray;
                 color: gray;
             }
-            .chat {
-                font-size: 200%;
-            }
         </style>
+        <script src="main.js"></script>
     </head>
     <body>
-        <div class="chat">You: {{user}}</div>
-        <div class="chat">Assitant: {{answer}}</div>
+        <input id="send" placeholder="Type here...">
+        <button onclick="send()">Send</button>
     </body>
 </html>
